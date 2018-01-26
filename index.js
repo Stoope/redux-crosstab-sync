@@ -1,5 +1,4 @@
 let lastTimeStamp = 0;
-const LAST_ACTION = "LAST_ACTION";
 
 const timestampAction = action => {
   const stampedAction = action;
@@ -14,7 +13,7 @@ const actionStorageMiddleware = () => next => action => {
     try {
       const stampedAction = timestampAction(action);
       lastTimeStamp = stampedAction.$time;
-      localStorage.setItem(LAST_ACTION, JSON.stringify(stampedAction));
+      localStorage.setItem("LAST_ACTION", JSON.stringify(stampedAction));
     } catch (e) {}
   }
   return next(action);
