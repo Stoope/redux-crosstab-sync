@@ -1,9 +1,13 @@
 let lastTimeStamp = 0;
 const LAST_ACTION = "LAST_ACTION";
 
-export const timestampAction = action => ({
-  stampedAction: { ...action, $time: Date.now() }
-});
+const timestampAction = action => {
+  const stampedAction = action;
+  stampedAction.$time = Date.now();
+  return {
+    stampedAction
+  };
+};
 
 const actionStorageMiddleware = () => next => action => {
   if (action && !action.$time) {
@@ -16,7 +20,7 @@ const actionStorageMiddleware = () => next => action => {
   return next(action);
 };
 
-export const createStorageListener = (store, config = {}) => {
+const createStorageListener = (store, config = {}) => {
   const exclude = config.exclude;
   const include = config.include;
 
@@ -43,4 +47,4 @@ export const createStorageListener = (store, config = {}) => {
   });
 };
 
-export default actionStorageMiddleware;
+module.exports = { actionStorageMiddleware, createStorageListener };
