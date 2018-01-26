@@ -1,0 +1,21 @@
+{
+  "name": "redux-crosstab-sync",
+  "version": "1.0.0",
+  "description":
+    "Library for syncing redux action between all open tabs on the same domain",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stoope/redux-crosstab-sync.git"
+  },
+  "keywords": ["redux", "sync", "localstorage"],
+  "author": "Kurennykh Stepan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stoope/redux-crosstab-sync/issues"
+  },
+  "homepage": "https://github.com/Stoope/redux-crosstab-sync#readme"
+}
