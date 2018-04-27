@@ -1,6 +1,6 @@
 {
   "name": "redux-crosstab-sync",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description":
     "Library for syncing redux action between all open tabs on the same domain",
   "main": "index.js",

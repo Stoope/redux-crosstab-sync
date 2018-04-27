@@ -10,15 +10,29 @@ var timestampAction = function timestampAction(action) {
   };
 };
 
-var actionStorageMiddleware = function actionStorageMiddleware() {
+var createActionStorageMiddlewareWithConfig = function createActionStorageMiddlewareWithConfig(
+  config
+) {
+  return function actionStorageMiddleware() {
+    return actionStorageMiddleware(config);
+  };
+};
+
+var actionStorageMiddleware = function actionStorageMiddleware(config) {
   return function(next) {
     return function(action) {
       if (action && !action.$time) {
-        try {
-          var stampedAction = timestampAction(action);
-          lastTimeStamp = stampedAction.$time;
-          localStorage.setItem("LAST_ACTION", JSON.stringify(stampedAction));
-        } catch (e) {}
+        if (
+          config == null ||
+          config.include == null ||
+          config.include.includes(action.type)
+        ) {
+          try {
+            var stampedAction = timestampAction(action);
+            lastTimeStamp = stampedAction.$time;
+            localStorage.setItem("LAST_ACTION", JSON.stringify(stampedAction));
+          } catch (e) {}
+        }
       }
       return next(action);
     };
