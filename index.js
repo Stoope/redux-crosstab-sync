@@ -79,5 +79,6 @@ var createStorageListener = function createStorageListener(store) {
 
 module.exports = {
   actionStorageMiddleware: actionStorageMiddleware,
+  createActionStorageMiddlewareWithConfig: createActionStorageMiddlewareWithConfig,
   createStorageListener: createStorageListener
 };
